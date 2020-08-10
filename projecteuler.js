@@ -198,4 +198,44 @@ function differenceOfSums(params) {
   return squareOfTheSums() - sumOfTheSquares();
 }
 
-console.log(differenceOfSums());
+//console.log(differenceOfSums());
+
+//10001 prime number
+
+function prime10001() {
+  let primeArr = [];
+
+  for (let i = 1; primeArr.length < 10001; i++) {
+    if (isPrime(i)) {
+      primeArr.push(i);
+    }
+  }
+
+  function isPrime(number) {
+    if (number <= 1) return false;
+
+    // The check for the number 2 and 3
+    if (number <= 3) return true;
+
+    if (number % 2 == 0 || number % 3 == 0) return false;
+
+    for (let i = 5; i * i <= number; i = i + 6) {
+      if (number % i == 0 || number % (i + 2) == 0) return false;
+    }
+
+    return true;
+  }
+
+  // function primeCheck(x) {
+  //   for (let i = 2; i < x; i++) {
+  //     if (x % i == 0) {
+  //       return false;
+  //     }
+  //   }
+  // }
+// my prime check above(in commit) is flawed not sure how to fix
+
+  return primeArr[10000];
+}
+
+//console.log(prime10001());
