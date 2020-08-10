@@ -10,6 +10,7 @@ function multiplesOf3and5() {
 }
 
 //multiplesOf3and5();
+
 //looping
 function evenFibonacciNums() {
   let firstnum = 0;
@@ -41,7 +42,6 @@ function evenFibonacciNums() {
 //evenFibonacciNums();
 
 // recursive fallow along
-
 function recursiveEvenFibonacciNums(n) {
   if (n <= 2) {
     return 1;
@@ -54,7 +54,6 @@ function recursiveEvenFibonacciNums(n) {
 //console.log(recursiveEvenFibonacciNums(10));
 
 //prime factors
-
 function primeFactors(num) {
   function ifPrime(num) {
     for (let i = 2; i <= Math.sqrt(num); i++) {
@@ -91,7 +90,6 @@ function prime_factors(num) {
   return result;
 }
 //console.log(prime_factors(600851475143));
-
 function thirdPrime(num) {
   n = 2;
   e = num;
@@ -126,11 +124,12 @@ function nonEmptyArr(arr, target) {
     }
   }
   console.log(arrSum);
+  //1707781-CJpynXMbPV4Yp2Uq5gRFss9YMMH2VtvxdHpSYd8e
 }
 
-nonEmptyArr(array, targetSum);
+//nonEmptyArr(array, targetSum);
 
-nonEmptyArr(arr2, target2);
+//nonEmptyArr(arr2, target2);
 
 //const check = arr2.includes(10);
 
@@ -139,28 +138,28 @@ nonEmptyArr(arr2, target2);
 arrParty = ["bruce", "ty", "thomas", "de amber", "ty", "bryan"];
 
 const party2 = (arr, name) => {
-  if(arr.includes(name)){
-    return true
+  if (arr.includes(name)) {
+    return true;
   } else {
-    return false
+    return false;
   }
-}
+};
 
 const party = (arr, name) => {
-  if(arr.includes(name)){
-    return true
+  if (arr.includes(name)) {
+    return true;
   } else {
-    return false
+    return false;
   }
-}
+};
 
-const sendEmail = (x) =>{
+const sendEmail = (x) => {
   if (x) {
-    console.log('shots')
+    console.log("shots");
   } else {
-    console.log('send email')
+    console.log("send email");
   }
-}
+};
 
 //sendEmail(party(arrParty, 'hector'))
 
@@ -174,4 +173,29 @@ function staircase(numsteps) {
   }
 }
 
-staircase(99);
+//staircase(99);
+
+//sum square difference
+function differenceOfSums(params) {
+  function sumOfTheSquares() {
+    let sum = 0;
+    for (let i = 0; i <= 100; i++) {
+      sum += Math.pow(i, 2);
+    }
+
+    return sum;
+  }
+
+  function squareOfTheSums() {
+    let sum = 0;
+    for (let i = 0; i <= 100; i++) {
+      sum += i;
+    }
+
+    return Math.pow(sum, 2);
+  }
+  console.log(sumOfTheSquares(), squareOfTheSums());
+  return squareOfTheSums() - sumOfTheSquares();
+}
+
+console.log(differenceOfSums());
