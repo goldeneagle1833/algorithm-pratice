@@ -233,9 +233,48 @@ function prime10001() {
   //     }
   //   }
   // }
-// my prime check above(in commit) is flawed not sure how to fix
+  // my prime check above(in commit) is flawed not sure how to fix
 
   return primeArr[10000];
 }
 
 //console.log(prime10001());
+
+function thirteenSum() {
+  let largeNumSum =
+    "7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172471218839987979087922749219016997208880937766572733300105336788122023542180975125454059475224352584907711670556013604839586446706324415722155397536978179778461740649551492908625693219784686224828397224137565705605749026140797296865241453510047482166370484403199890008895243450658541227588666881164271714799244429282308634656748139191231628245861786645835912456652947654568284891288314260769004224219022671055626321111109370544217506941658960408071984038509624554443629812309878799272442849091888458015616609791913387549920052406368991256071760605886116467109405077541002256983155200055935729725";
+
+  let thrteenSum = [0];
+  let sum = [];
+  console.log(largeNumSum.length);
+
+  for (let i = 0; i < largeNumSum.length; i++) {
+    for (let j = 12; j < largeNumSum.length; j++) {
+      let size13 = largeNumSum.substr(i, j); // grabs the string at 13 length
+
+      let split13 = size13.split(""); // splits the num string into differnt strings
+      console.log(split13);
+      for (let i = 0; i < 11; i++) {
+        let numSize13 = parseInt(split13[i]); // turns strings into a number
+
+        sum.push(numSize13);
+      }
+
+      let interSum = sum.reduce(function (a, b) {
+        return a + b;
+      }); //reduces the array into one num
+
+      console.log(interSum);
+      if (interSum > thrteenSum[0]) {
+        console.log("something");
+        thrteenSum.pop();
+        thrteenSum.push(interSum);
+      }
+    }
+  }
+}
+
+// need the sum arr to clear its self after being used to store the value of reducing of the 13 digit num
+
+3167176531330;
+thirteenSum();
