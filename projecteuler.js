@@ -330,7 +330,7 @@ function numberSizeSum(numInput, size) {
 function smallestMultiple() {
   let multi = [];
 
-  for (let i = 232792000; i < 10000000000; i++) {
+  for (let i = 20; i < 10000000000; i += 20) {
     console.log(i);
     if (
       i % 2 === 0 &&
@@ -363,4 +363,52 @@ function smallestMultiple() {
   console.log(multi);
 }
 
-smallestMultiple();
+//smallestMultiple();
+
+let divisibleSumPairsArr = [1, 2, 3, 4, 5, 6];
+let divisibleSumPairsK = 5;
+function divisibleSumPairs(arr, k) {
+  sumDivArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      let sumDiv = [];
+
+      if ((arr[i] + arr[j]) % k === 0) {
+        //console.log(arr[i] + arr[j]);
+        sumDiv.push(arr[i], arr[j]);
+      }
+      
+        if (i > j &&
+          !sumDivArr.includes([arr[i], arr[j]]) ||
+          sumDivArr.includes(arr[j], [arr[i]])
+        ) {
+          sumDivArr.push(sumDiv);
+          //console.log(sumDivArr);
+        }
+      
+    }
+  }
+  console.log(sumDivArr);
+}
+
+divisibleSumPairs(divisibleSumPairsArr, divisibleSumPairsK);
+// below is a classmates thought process 
+// the a > j in her logic was able to fix my fucnction divisible sum pairs from loging duplicte outcomes 
+const sumPairs = (n, k) => {
+  //let arr = [];
+  let arr2 = [];
+  let sum = 0;
+  for (a = 1; a < n + 1; a++) {
+   // arr.push(a);
+    for (j = 1; j < n + 1; j++) {
+      if (a > j && (a + j) % k === 0) {
+        sum += 1;
+        arr2.push([a, j]);
+      }
+    }
+  }
+  console.log(sum);
+  console.log(arr2);
+};
+//sumPairs(6, 3)
+//[([2, 1], [4, 2], [5, 1], [5, 4], [6, 3])];
