@@ -1,3 +1,8 @@
+// .reduce needs this 
+function reducer(a, b) {
+  return a + b;
+}
+
 function multiplesOf3and5() {
   let sum = 0;
   for (let i = 0; i < 1000; i++) {
@@ -28,7 +33,7 @@ function evenFibonacciNums() {
       arrFib.push(fibNum);
     }
   }
-  countingFibonacci();
+  //countingFibonacci();
 
   //console.log(arrFib);
 
@@ -90,6 +95,7 @@ function prime_factors(num) {
   return result;
 }
 //console.log(prime_factors(600851475143));
+
 function thirdPrime(num) {
   n = 2;
   e = num;
@@ -377,29 +383,29 @@ function divisibleSumPairs(arr, k) {
         //console.log(arr[i] + arr[j]);
         sumDiv.push(arr[i], arr[j]);
       }
-      
-        if (i > j &&
-          !sumDivArr.includes([arr[i], arr[j]]) ||
-          sumDivArr.includes(arr[j], [arr[i]])
-        ) {
-          sumDivArr.push(sumDiv);
-          //console.log(sumDivArr);
-        }
-      
+
+      if (
+        (i > j && !sumDivArr.includes([arr[i], arr[j]])) ||
+        sumDivArr.includes(arr[j], [arr[i]])
+      ) {
+        sumDivArr.push(sumDiv);
+        //console.log(sumDivArr);
+      }
     }
   }
   console.log(sumDivArr);
 }
 
-divisibleSumPairs(divisibleSumPairsArr, divisibleSumPairsK);
-// below is a classmates thought process 
-// the a > j in her logic was able to fix my fucnction divisible sum pairs from loging duplicte outcomes 
+//divisibleSumPairs(divisibleSumPairsArr, divisibleSumPairsK);
+
+// below is a classmates thought process
+// the a > j in her logic was able to fix my fucnction divisible sum pairs from loging duplicte outcomes
 const sumPairs = (n, k) => {
   //let arr = [];
   let arr2 = [];
   let sum = 0;
   for (a = 1; a < n + 1; a++) {
-   // arr.push(a);
+    // arr.push(a);
     for (j = 1; j < n + 1; j++) {
       if (a > j && (a + j) % k === 0) {
         sum += 1;
@@ -412,3 +418,70 @@ const sumPairs = (n, k) => {
 };
 //sumPairs(6, 3)
 //[([2, 1], [4, 2], [5, 1], [5, 4], [6, 3])];
+
+
+
+
+
+
+// below is my slow algo but it works 
+
+
+let primesArr = [];
+function addingPrime(num) {
+  for (let counter = 2; counter <= num; counter++) {
+    let notPrime = false;
+    for (let i = 2; i <= counter; i++) {
+      if (counter % i === 0 && i !== counter) {
+        notPrime = true;
+        
+      }
+    }
+    if (notPrime === false) {
+      primesArr.push(counter);console.log(counter)
+    }
+
+    function reducer(a, b) {
+      return a + b;
+    }
+  }
+
+  console.log(primesArr.reduce(reducer));
+}
+addingPrime(10);
+
+
+
+
+
+// below it the the better and faster way 
+
+var eratosthenes = function(n) {
+  // Eratosthenes algorithm to find all primes under n
+  var array = [], upperLimit = Math.sqrt(n), output = [];
+
+  // Make an array from 2 to (n - 1)
+  for (var i = 0; i < n; i++) {
+      array.push(true);
+  }
+
+  // Remove multiples of primes starting from 2, 3, 5,...
+  for (var i = 2; i <= upperLimit; i++) {
+      if (array[i]) {
+          for (var j = i * i; j < n; j += i) {
+              array[j] = false;
+          }
+      }
+  }
+
+  // All array[i] set to true are primes
+  for (var i = 2; i < n; i++) {
+      if(array[i]) {
+          output.push(i);
+      }
+  }
+
+  return output;
+};
+
+console.log(eratosthenes(2000000).reduce(reducer))
