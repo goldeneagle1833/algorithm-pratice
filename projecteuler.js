@@ -1,8 +1,8 @@
-// .reduce needs this 
+// .reduce needs this
 function reducer(a, b) {
   return a + b;
 }
-
+//////////////////////////////////////////////////////////////////////////
 function multiplesOf3and5() {
   let sum = 0;
   for (let i = 0; i < 1000; i++) {
@@ -15,7 +15,7 @@ function multiplesOf3and5() {
 }
 
 //multiplesOf3and5();
-
+//////////////////////////////////////////////////////////////////////////
 //looping
 function evenFibonacciNums() {
   let firstnum = 0;
@@ -45,7 +45,7 @@ function evenFibonacciNums() {
   console.log(sum);
 }
 //evenFibonacciNums();
-
+//////////////////////////////////////////////////////////////////////////
 // recursive fallow along
 function recursiveEvenFibonacciNums(n) {
   if (n <= 2) {
@@ -58,6 +58,7 @@ function recursiveEvenFibonacciNums(n) {
 }
 //console.log(recursiveEvenFibonacciNums(10));
 
+//////////////////////////////////////////////////////////////////////////
 //prime factors
 function primeFactors(num) {
   function ifPrime(num) {
@@ -96,6 +97,7 @@ function prime_factors(num) {
 }
 //console.log(prime_factors(600851475143));
 
+//////////////////////////////////////////////////////////////////////////
 function thirdPrime(num) {
   n = 2;
   e = num;
@@ -110,6 +112,8 @@ function thirdPrime(num) {
 }
 
 //thirdPrime(600851475143);
+
+//////////////////////////////////////////////////////////////////////////
 let arrSum = [];
 
 let array = [3, 5, -4, 8, 11, 1, -1, 8];
@@ -141,6 +145,8 @@ function nonEmptyArr(arr, target) {
 
 //console.log(check);
 //1711551-cb8PSIO2EwpDmDJi2a1FgUlctGuhsCgRRmAYV7LJ
+
+//////////////////////////////////////////////////////////////////////////
 arrParty = ["bruce", "ty", "thomas", "de amber", "ty", "bryan"];
 
 const party2 = (arr, name) => {
@@ -168,7 +174,7 @@ const sendEmail = (x) => {
 };
 
 //sendEmail(party(arrParty, 'hector'))
-
+//////////////////////////////////////////////////////////////////////////
 let pound = "#";
 
 function staircase(numsteps) {
@@ -180,7 +186,7 @@ function staircase(numsteps) {
 }
 
 //staircase(99);
-
+/////////////////////////////////////////////////////////////////////////
 //sum square difference
 function differenceOfSums(params) {
   function sumOfTheSquares() {
@@ -245,6 +251,8 @@ function prime10001() {
 }
 
 //console.log(prime10001());
+
+//////////////////////////////////////////////////////////////////////////
 let largeNum =
   "7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172471218839987979087922749219016997208880937766572733300105336788122023542180975125454059475224352584907711670556013604839586446706324415722155397536978179778461740649551492908625693219784686224828397224137565705605749026140797296865241453510047482166370484403199890008895243450658541227588666881164271714799244429282308634656748139191231628245861786645835912456652947654568284891288314260769004224219022671055626321111109370544217506941658960408071984038509624554443629812309878799272442849091888458015616609791913387549920052406368991256071760605886116467109405077541002256983155200055935729725";
 
@@ -419,13 +427,8 @@ const sumPairs = (n, k) => {
 //sumPairs(6, 3)
 //[([2, 1], [4, 2], [5, 1], [5, 4], [6, 3])];
 
-
-
-
-
-
-// below is my slow algo but it works 
-
+///////////////////////////////////////////////////////////////////////
+// below is my slow algo but it works
 
 let primesArr = [];
 function addingPrime(num) {
@@ -434,11 +437,11 @@ function addingPrime(num) {
     for (let i = 2; i <= counter; i++) {
       if (counter % i === 0 && i !== counter) {
         notPrime = true;
-        
       }
     }
     if (notPrime === false) {
-      primesArr.push(counter);console.log(counter)
+      primesArr.push(counter);
+      console.log(counter);
     }
 
     function reducer(a, b) {
@@ -448,40 +451,548 @@ function addingPrime(num) {
 
   console.log(primesArr.reduce(reducer));
 }
-addingPrime(10);
+//addingPrime(10);
 
+// below it the the better and faster way
 
-
-
-
-// below it the the better and faster way 
-
-var eratosthenes = function(n) {
+var eratosthenes = function (n) {
   // Eratosthenes algorithm to find all primes under n
-  var array = [], upperLimit = Math.sqrt(n), output = [];
+  var array = [],
+    upperLimit = Math.sqrt(n),
+    output = [];
 
   // Make an array from 2 to (n - 1)
   for (var i = 0; i < n; i++) {
-      array.push(true);
+    array.push(true);
   }
 
   // Remove multiples of primes starting from 2, 3, 5,...
   for (var i = 2; i <= upperLimit; i++) {
-      if (array[i]) {
-          for (var j = i * i; j < n; j += i) {
-              array[j] = false;
-          }
+    if (array[i]) {
+      for (var j = i * i; j < n; j += i) {
+        array[j] = false;
       }
+    }
   }
 
   // All array[i] set to true are primes
   for (var i = 2; i < n; i++) {
-      if(array[i]) {
-          output.push(i);
-      }
+    if (array[i]) {
+      output.push(i);
+    }
   }
 
   return output;
 };
 
-console.log(eratosthenes(2000000).reduce(reducer))
+//console.log(eratosthenes(2000000).reduce(reducer))
+
+//////////////////////////////////////////////////////////////////////////
+
+// largest product in grid
+
+// i feel like the grid array is a decent idea for a foundation
+// the issue is defining the diag and up down my logic is defining something that doesnt exist
+// with the up or diag get to then end of the array its going out of the 20x20 grid
+
+const grid = [
+  [
+    08,
+    02,
+    22,
+    97,
+    38,
+    15,
+    00,
+    40,
+    00,
+    75,
+    04,
+    05,
+    07,
+    78,
+    52,
+    12,
+    50,
+    77,
+    91,
+    08,
+  ],
+  [
+    49,
+    49,
+    99,
+    40,
+    17,
+    81,
+    18,
+    57,
+    60,
+    87,
+    17,
+    40,
+    98,
+    43,
+    69,
+    48,
+    04,
+    56,
+    62,
+    00,
+  ],
+  [
+    81,
+    49,
+    31,
+    73,
+    55,
+    79,
+    14,
+    29,
+    93,
+    71,
+    40,
+    67,
+    53,
+    88,
+    30,
+    03,
+    49,
+    13,
+    36,
+    65,
+  ],
+  [
+    52,
+    70,
+    95,
+    23,
+    04,
+    60,
+    11,
+    42,
+    69,
+    24,
+    68,
+    56,
+    01,
+    32,
+    56,
+    71,
+    37,
+    02,
+    36,
+    91,
+  ],
+  [
+    22,
+    31,
+    16,
+    71,
+    51,
+    67,
+    63,
+    89,
+    41,
+    92,
+    36,
+    54,
+    22,
+    40,
+    40,
+    28,
+    66,
+    33,
+    13,
+    80,
+  ],
+  [
+    24,
+    47,
+    32,
+    60,
+    99,
+    03,
+    45,
+    02,
+    44,
+    75,
+    33,
+    53,
+    78,
+    36,
+    84,
+    20,
+    35,
+    17,
+    12,
+    50,
+  ],
+  [
+    32,
+    98,
+    81,
+    28,
+    64,
+    23,
+    67,
+    10,
+    26,
+    38,
+    40,
+    67,
+    59,
+    54,
+    70,
+    66,
+    18,
+    38,
+    64,
+    70,
+  ],
+  [
+    67,
+    26,
+    20,
+    68,
+    02,
+    62,
+    12,
+    20,
+    95,
+    63,
+    94,
+    39,
+    63,
+    08,
+    40,
+    91,
+    66,
+    49,
+    94,
+    21,
+  ],
+  [
+    24,
+    55,
+    58,
+    05,
+    66,
+    73,
+    99,
+    26,
+    97,
+    17,
+    78,
+    78,
+    96,
+    83,
+    14,
+    88,
+    34,
+    89,
+    63,
+    72,
+  ],
+  [
+    21,
+    36,
+    23,
+    09,
+    75,
+    00,
+    76,
+    44,
+    20,
+    45,
+    35,
+    14,
+    00,
+    61,
+    33,
+    97,
+    34,
+    31,
+    33,
+    95,
+  ],
+  [
+    78,
+    17,
+    53,
+    28,
+    22,
+    75,
+    31,
+    67,
+    15,
+    94,
+    03,
+    80,
+    04,
+    62,
+    16,
+    14,
+    09,
+    53,
+    56,
+    92,
+  ],
+  [
+    16,
+    39,
+    05,
+    42,
+    96,
+    35,
+    31,
+    47,
+    55,
+    58,
+    88,
+    24,
+    00,
+    17,
+    54,
+    24,
+    36,
+    29,
+    85,
+    57,
+  ],
+  [
+    86,
+    56,
+    00,
+    48,
+    35,
+    71,
+    89,
+    07,
+    05,
+    44,
+    44,
+    37,
+    44,
+    60,
+    21,
+    58,
+    51,
+    54,
+    17,
+    58,
+  ],
+  [
+    19,
+    80,
+    81,
+    68,
+    05,
+    94,
+    47,
+    69,
+    28,
+    73,
+    92,
+    13,
+    86,
+    52,
+    17,
+    77,
+    04,
+    89,
+    55,
+    40,
+  ],
+  [
+    04,
+    52,
+    08,
+    83,
+    97,
+    35,
+    99,
+    16,
+    07,
+    97,
+    57,
+    32,
+    16,
+    26,
+    26,
+    79,
+    33,
+    27,
+    98,
+    66,
+  ],
+  [
+    88,
+    36,
+    68,
+    87,
+    57,
+    62,
+    20,
+    72,
+    03,
+    46,
+    33,
+    67,
+    46,
+    55,
+    12,
+    32,
+    63,
+    93,
+    53,
+    69,
+  ],
+  [
+    04,
+    42,
+    16,
+    73,
+    38,
+    25,
+    39,
+    11,
+    24,
+    94,
+    72,
+    18,
+    08,
+    46,
+    29,
+    32,
+    40,
+    62,
+    76,
+    36,
+  ],
+  [
+    20,
+    69,
+    36,
+    41,
+    72,
+    30,
+    23,
+    88,
+    34,
+    62,
+    99,
+    69,
+    82,
+    67,
+    59,
+    85,
+    74,
+    04,
+    36,
+    16,
+  ],
+  [
+    20,
+    73,
+    35,
+    29,
+    78,
+    31,
+    90,
+    01,
+    74,
+    31,
+    49,
+    71,
+    48,
+    86,
+    81,
+    16,
+    23,
+    57,
+    05,
+    54,
+  ],
+  [
+    01,
+    70,
+    54,
+    71,
+    83,
+    51,
+    54,
+    69,
+    16,
+    92,
+    33,
+    48,
+    61,
+    43,
+    52,
+    01,
+    89,
+    19,
+    67,
+    48,
+  ],
+];
+
+function grid4x4(grid) {
+  let sum = [0];
+  for (let i = 19; i < grid.length; i--) {
+    for (let j = 0; j < grid[i].length; j++) {
+      const hozRightSum =
+        grid[i][j] * grid[i][j + 1] * grid[i][j + 2] * grid[i][j + 3];
+      const hozleftSum =
+        grid[i][j] * grid[i][j - 1] * grid[i][j - 2] * grid[i][j - 3];
+
+      // const backdiagonally =
+      //   grid[i][j] *
+      //   grid[i + 1][j + 1] *
+      //   grid[i + 2][j + 1] *
+      //   grid[i + 3][j + 1];
+      const forwardDiagonally =
+        grid[i + 3][j] *
+        grid[i + 2][j + 1] *
+        grid[i + 1][j + 1] *
+        grid[i][j + 1];
+      const up = grid[i][j] * grid[i + 1][j] * grid[i + 2][j] * grid[i + 3][j];
+      //checking the four num right
+      // if (sum[0] < hozRightSum) {
+      //   sum.shift()
+      //   console.log(hozRightSum)
+      //   sum.push(hozRightSum);
+      // }
+
+      //checking the four left num
+      // if(sum[0] < hozleftSum){
+      //   sum.shift()
+      //   console.log(hozleftSum)
+      //   sum.push(hozleftSum)
+      // }
+
+      // if(sum[0]< backdiagonally) {
+      //   sum.shift()
+      //   console.log(diagonally)
+      //   sum.push(diagonally)
+      // }
+
+      if (sum[0] < forwardDiagonally) {
+        sum.shift();
+        console.log(forwardDiagonally);
+        sum.push(forwardDiagonally);
+      }
+
+      if (sum[0] < up) {
+        sum.shift();
+        console.log(i, i + 1, i + 2, i + 3, j);
+        console.log(up);
+        sum.push(up);
+      }
+    }
+  }
+  console.log(sum);
+}
+
+grid4x4(grid);
