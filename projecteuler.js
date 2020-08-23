@@ -995,4 +995,64 @@ function grid4x4(grid) {
   console.log(sum);
 }
 
-grid4x4(grid);
+//grid4x4(grid);
+
+//////////////////////////////////////////////////////////////////////////////
+
+// factoring first go
+
+function factoring(max) {
+  factorArr = [];
+  factorArr.push(max, 1);
+  if (factorArr.length <= 50) {
+    for (let i = 0; i <= max / 2; i++) {
+      for (let j = 0; j <= i; j++) {
+        if (i * j == max && !factorArr.includes(j)) {
+          factorArr.push(j);
+        }
+        if (i * j == max && !factorArr.includes(i)) {
+          factorArr.push(i);
+        }
+        if (factorArr.length >= 500) {
+          console.log(max);
+        }
+      }
+    }
+  }
+  factorArr.sort();
+  console.log(factorArr);
+  console.log(factorArr.length);
+}
+
+//factoring(515550);
+// the proble is the same as the factoring frist time its anouther O of n^2 run time 
+// i need to learn a better way to check a large number set with out it becoming a nested problem
+// untill then i think the functions could work just they are to long to be practical 
+function factoringTakeTwo(num) {
+  let factorsArr = [];
+  for (let i = 0; i <= num / 2; i++) {
+    if (num % i == 0) {
+      factorsArr.push(i);
+    }
+  }
+  factorsArr.push(num);
+  //console.log(factorsArr, factorsArr.length)
+  return factorsArr;
+}
+
+function factorsLength() {
+  for (let i = 0; i < 99999999999999; i++) {
+
+    if (factoringTakeTwo(i).length > 150) {
+      
+      console.log(factoringTakeTwo(i));
+      console.log(i)
+      console.log(factoringTakeTwo(i).length)
+      return
+    }
+  }
+}
+
+//factorsLength();
+//console.log( factoringTakeTwo(10))
+//
