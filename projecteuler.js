@@ -397,15 +397,15 @@ divisibleSumPairs(divisibleSumPairsArr, divisibleSumPairsK);
 const sumPairs = (n, k) => {
   //let arr = [];
   let arr2 = [];
-  let sum = 0;
-  for (a = 1; a < n + 1; a++) {
+      let sum = 0;
+       for (a = 1; a < n + 1; a++) {
    // arr.push(a);
-    for (j = 1; j < n + 1; j++) {
+       for (j = 1; j < n + 1; j++) {
       if (a > j && (a + j) % k === 0) {
         sum += 1;
         arr2.push([a, j]);
       }
-    }
+        }
   }
   console.log(sum);
   console.log(arr2);
