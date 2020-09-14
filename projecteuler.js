@@ -1,8 +1,3 @@
-// .reduce needs this
-function reducer(a, b) {
-  return a + b;
-}
-//////////////////////////////////////////////////////////////////////////
 function multiplesOf3and5() {
   let sum = 0;
   for (let i = 0; i < 1000; i++) {
@@ -15,7 +10,7 @@ function multiplesOf3and5() {
 }
 
 //multiplesOf3and5();
-//////////////////////////////////////////////////////////////////////////
+
 //looping
 function evenFibonacciNums() {
   let firstnum = 0;
@@ -35,6 +30,7 @@ function evenFibonacciNums() {
   // }
   // countingFibonacci();
 
+
   // console.log(arrFib);
 
   for (let index = 0; index < arrFib.length; index++) {
@@ -45,7 +41,7 @@ function evenFibonacciNums() {
   console.log(sum);
 }
 //evenFibonacciNums();
-//////////////////////////////////////////////////////////////////////////
+
 // recursive fallow along
 function recursiveEvenFibonacciNums(n) {
   if (n <= 2) {
@@ -58,7 +54,6 @@ function recursiveEvenFibonacciNums(n) {
 }
 //console.log(recursiveEvenFibonacciNums(10));
 
-//////////////////////////////////////////////////////////////////////////
 //prime factors
 function primeFactors(num) {
   function ifPrime(num) {
@@ -96,8 +91,6 @@ function prime_factors(num) {
   return result;
 }
 //console.log(prime_factors(600851475143));
-
-//////////////////////////////////////////////////////////////////////////
 function thirdPrime(num) {
   n = 2;
   e = num;
@@ -112,8 +105,6 @@ function thirdPrime(num) {
 }
 
 //thirdPrime(600851475143);
-
-//////////////////////////////////////////////////////////////////////////
 let arrSum = [];
 
 let array = [3, 5, -4, 8, 11, 1, -1, 8];
@@ -145,8 +136,6 @@ function nonEmptyArr(arr, target) {
 
 //console.log(check);
 //1711551-cb8PSIO2EwpDmDJi2a1FgUlctGuhsCgRRmAYV7LJ
-
-//////////////////////////////////////////////////////////////////////////
 arrParty = ["bruce", "ty", "thomas", "de amber", "ty", "bryan"];
 
 const party2 = (arr, name) => {
@@ -174,7 +163,7 @@ const sendEmail = (x) => {
 };
 
 //sendEmail(party(arrParty, 'hector'))
-//////////////////////////////////////////////////////////////////////////
+
 let pound = "#";
 
 function staircase(numsteps) {
@@ -186,7 +175,7 @@ function staircase(numsteps) {
 }
 
 //staircase(99);
-/////////////////////////////////////////////////////////////////////////
+
 //sum square difference
 function differenceOfSums(params) {
   function sumOfTheSquares() {
@@ -251,8 +240,6 @@ function prime10001() {
 }
 
 //console.log(prime10001());
-
-//////////////////////////////////////////////////////////////////////////
 let largeNum =
   "7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172471218839987979087922749219016997208880937766572733300105336788122023542180975125454059475224352584907711670556013604839586446706324415722155397536978179778461740649551492908625693219784686224828397224137565705605749026140797296865241453510047482166370484403199890008895243450658541227588666881164271714799244429282308634656748139191231628245861786645835912456652947654568284891288314260769004224219022671055626321111109370544217506941658960408071984038509624554443629812309878799272442849091888458015616609791913387549920052406368991256071760605886116467109405077541002256983155200055935729725";
 
@@ -391,35 +378,35 @@ function divisibleSumPairs(arr, k) {
         //console.log(arr[i] + arr[j]);
         sumDiv.push(arr[i], arr[j]);
       }
-
-      if (
-        (i > j && !sumDivArr.includes([arr[i], arr[j]])) ||
-        sumDivArr.includes(arr[j], [arr[i]])
-      ) {
-        sumDivArr.push(sumDiv);
-        //console.log(sumDivArr);
-      }
+      
+        if (i > j &&
+          !sumDivArr.includes([arr[i], arr[j]]) ||
+          sumDivArr.includes(arr[j], [arr[i]])
+        ) {
+          sumDivArr.push(sumDiv);
+          //console.log(sumDivArr);
+        }
+      
     }
   }
   console.log(sumDivArr);
 }
 
-//divisibleSumPairs(divisibleSumPairsArr, divisibleSumPairsK);
-
-// below is a classmates thought process
-// the a > j in her logic was able to fix my fucnction divisible sum pairs from loging duplicte outcomes
+divisibleSumPairs(divisibleSumPairsArr, divisibleSumPairsK);
+// below is a classmates thought process 
+// the a > j in her logic was able to fix my fucnction divisible sum pairs from loging duplicte outcomes 
 const sumPairs = (n, k) => {
   //let arr = [];
   let arr2 = [];
-  let sum = 0;
-  for (a = 1; a < n + 1; a++) {
-    // arr.push(a);
-    for (j = 1; j < n + 1; j++) {
+      let sum = 0;
+       for (a = 1; a < n + 1; a++) {
+   // arr.push(a);
+       for (j = 1; j < n + 1; j++) {
       if (a > j && (a + j) % k === 0) {
         sum += 1;
         arr2.push([a, j]);
       }
-    }
+        }
   }
   console.log(sum);
   console.log(arr2);
