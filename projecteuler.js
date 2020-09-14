@@ -24,18 +24,18 @@ function evenFibonacciNums() {
   let arrFib = [];
   let sum = 0;
 
-  function countingFibonacci() {
-    for (let i = 2; i <= 33; i++) {
-      fibNum = firstnum + secondNum;
-      firstnum = secondNum;
-      secondNum = fibNum;
+  // function countingFibonacci() {
+  //   for (let i = 2; i <= 33; i++) {
+  //     fibNum = firstnum + secondNum;
+  //     firstnum = secondNum;
+  //     secondNum = fibNum;
 
-      arrFib.push(fibNum);
-    }
-  }
-  //countingFibonacci();
+  //     arrFib.push(fibNum);
+  //   }
+  // }
+  // countingFibonacci();
 
-  //console.log(arrFib);
+  // console.log(arrFib);
 
   for (let index = 0; index < arrFib.length; index++) {
     if (arrFib[index] % 2 == 0) {
@@ -1025,9 +1025,9 @@ function factoring(max) {
 }
 
 //factoring(515550);
-// the proble is the same as the factoring frist time its anouther O of n^2 run time 
+// the proble is the same as the factoring frist time its anouther O of n^2 run time
 // i need to learn a better way to check a large number set with out it becoming a nested problem
-// untill then i think the functions could work just they are to long to be practical 
+// untill then i think the functions could work just they are to long to be practical
 function factoringTakeTwo(num) {
   let factorsArr = [];
   for (let i = 0; i <= num / 2; i++) {
@@ -1036,23 +1036,178 @@ function factoringTakeTwo(num) {
     }
   }
   factorsArr.push(num);
-  //console.log(factorsArr, factorsArr.length)
+  console.log(factorsArr, factorsArr.length);
   return factorsArr;
 }
 
 function factorsLength() {
   for (let i = 0; i < 99999999999999; i++) {
-
-    if (factoringTakeTwo(i).length > 150) {
-      
+    if (factoringTakeTwo(i).length > 50) {
       console.log(factoringTakeTwo(i));
-      console.log(i)
-      console.log(factoringTakeTwo(i).length)
-      return
+      console.log(i);
+      console.log(factoringTakeTwo(i).length);
+      return;
+    }
+  }
+}
+//console.log(factorsLength());
+//console.log( factoringTakeTwo(10))
+//
+
+///////////////////////////////////////////////////////////////////
+//triangle numbers Frist num with 500 divisors
+
+function triangleNum() {
+  triangleNumArr = [];
+  let bFactors = [];
+  function makingTriNums(a) {
+    for (let i = 1; i < 100000; i++) {
+      let b = i + a;
+      a = b;
+
+      function checkfactors(num) {
+        const isEven = num % 2 === 0;
+        let inc = isEven ? 1 : 2;
+        let factors = [1, num];
+
+        for (
+          let curFactor = isEven ? 2 : 3;
+          Math.pow(curFactor, 2) <= num;
+          curFactor += inc
+        ) {
+          if (num % curFactor !== 0) continue;
+          factors.push(curFactor);
+          let compliment = num / curFactor;
+          if (compliment !== curFactor) factors.push(compliment);
+        }
+
+        return factors;
+      }
+
+
+
+      console.log("this number", b)
+      bFactors.push(checkfactors(b))
+      console.log(bFactors)
+      console.log(bFactors[0].length)
+
+      if (bFactors[0].length > 500) {
+        console.log("i am a true" , b, i);
+        bFactors = []
+        return;
+      } else {
+        
+        console.log("i am a false",b);
+        bFactors = []
+      }
+
+    }
+  }
+
+  makingTriNums(0);
+
+}
+
+//triangleNum();
+
+///////////////////////////////////////////////////////////////////
+// subsequence of array
+
+let seqArr = [5, 1, 22, 25, 6, -1, 8, 10];
+let subArr = [1, 6, -1, 10];
+let subAnswer = [];
+
+function subsequenceOfArray() {
+  for (let i = 0; i < seqArr.length; i++) {
+    if (subArr.includes(seqArr[i])) {
+      subAnswer.push(seqArr[i]);
+
+      //console.log(true)
+    }
+  }
+  for (let i = 0; i < subArr.length; i++) {
+    if (subArr[i] === subAnswer[i]) {
+      console.log(true);
+    } else {
+      console.log(false);
     }
   }
 }
 
-//factorsLength();
-//console.log( factoringTakeTwo(10))
+//subsequenceOfArray();
+
+
+//////////////////////////////////////////////////////////////////
+// example Fibonacci numbers
+let fibsss = [];
+firstnum = 0;
+secondNum = 1;
+function countingFibonacci() {
+  for (let i = 2; i <= 33; i++) {
+    fibNum = firstnum + secondNum;
+    firstnum = secondNum;
+    secondNum = fibNum;
+
+    fibsss.push(fibNum);
+  }
+}
+//countingFibonacci();
+//console.log(fibsss)
+
+// define the problem
+// each num is the sum of the two peceding nums starting form 0 and 1
+
+function fib() {
+  let a = b;
+  let b = c;
+  let c = a + b;
+
+  console.log(c);
+}
+
+//fib();
+
+//postion 0 with 0
+// push to thier own arry
+// the new postion
+
+arr1 = [1, 2, 3, 3, 4];
+arr2 = [5, 8, 9, 1, 0];
+
+function points() {}
+
+let x = [
+  [1, 5, 3, 3, 4],
+  [5, 8, 9, 1, 0],
+];
+//let y = [[9, 8, 3], [1, 1, 1]]
+
+function convertCartesian() {
+  let pointArray = [];
+  //console.log(x[1])
+  for (let i = 0; i < x[0].length; i++) {
+    let arr = [];
+    arr.push(x[0][i]);
+    pointArray.push(arr);
+  }
+
+  let pointarr = [[1], [5], [3], [3], [4]];
+
+  for (let i = 0; i < x[1].length; i++) {
+    pointArray[i].push(x[1][i]);
+  }
+
+  pointarr[0].push(x[1][0]);
+  pointarr[1].push(x[1][1]);
+  pointarr[2].push(x[1][2]);
+  pointarr[3].push(x[1][3]);
+  pointarr[4].push(x[1][4]);
+
+  console.log(pointArray);
+  console.log(pointarr);
+}
+
+//convertCartesian()
+
+///////////////////////////////////////////////////////////////
 //
