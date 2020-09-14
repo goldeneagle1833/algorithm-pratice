@@ -1304,6 +1304,8 @@ function sumOf50DigitNums(a, b) {
 ////////////////////////////////////////////////////////////////////
 // Collatz sequence for longest sequence under a 1000000
 
+let longestCollatzArr = [[]];
+
 function largestCollatz() {
   for (let i = 1000000; i > 0; i--) {
     let collatzSeqence = [];
@@ -1326,7 +1328,12 @@ function largestCollatz() {
     }
     collatz(i);
 
-    console.log("this num:", i, "this seqence >", collatzSeqence);
+    if (longestCollatzArr[0].length < collatzSeqence.length) {
+      console.log("Number:", i, "has the longest seqence >", collatzSeqence);
+      longestCollatzArr = [];
+      longestCollatzArr.push(collatzSeqence);
+    }
   }
 }
-largestCollatz();
+
+//largestCollatz();
