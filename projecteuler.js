@@ -1050,23 +1050,45 @@ function triangleNum() {
       a = b;
 
       function checkfactors(num) {
-        const isEven = num % 2 === 0;
-        let inc = isEven ? 1 : 2;
-        let factors = [1, num];
+        //run though for num = 10
+        const isEven = num % 2 === 0;//difining if the current num is even or odd, which makes isEven a true or false statement
+              // isEven is true
+        let inc = isEven ? 1 : 2; // inc eather becomes a 1 if true or 2 if false. 
+              //this is first time i saw an if statment writen like this
+              // inc = 1 
+        let factors = [1, num]; // the factors array starting with 1 and the current num 
+              // [1, 10]
 
         for (
-          let curFactor = isEven ? 2 : 3;
-          Math.pow(curFactor, 2) <= num;
+          let curFactor = isEven ? 2 : 3; // defining the start of the loop
+                // curFactor = 2 because isEven is true so it doesnt asign the else block
+          Math.pow(curFactor, 2) <= num; // curFactor so 2 to the power of two 
+                // 4 <= 10 true
+                // 2nd loop  curFactor is 3? i think
+                // 9 <= 10 true and 
           curFactor += inc
+                // 2 += 1 so the next loop curFactor will start at 3? 
+                // 2nd loop  curFactor is 3? i think
+                // 3 += 1 so the next loop is 4?
         ) {
-          if (num % curFactor !== 0) continue;
-          factors.push(curFactor);
-          let compliment = num / curFactor;
-          if (compliment !== curFactor) factors.push(compliment);
+          // the factoring of the num
+          if (num % curFactor !== 0) continue; // continue is saying if the conditional is true
+                // 10 % 2 = 0 so 2 is a factor so ***i dont understand the reason behind !== 
+                // i thought it would be == 0 
+                // you would want to do what is in the if statement 
+          factors.push(curFactor); // pushs the curFactor to the factors array makes sence
+                // [1,10,2]
+          let compliment = num / curFactor; // this gets the other factor of the true curFactor 
+                // 10 / 2 = 5 so 5 is now the compliment 
+          if (compliment !== curFactor) factors.push(compliment); // just checking the curFactor and compliment if they are differant push compliment 
+                // 5 !== 2 not true so 5 gets pushed to the factor array 
+                // [1,10,2,5]
         }
 
         return factors;
       }
+
+     
 
       console.log("this number", b);
       bFactors.push(checkfactors(b));
@@ -1337,3 +1359,49 @@ function largestCollatz() {
 }
 
 //largestCollatz();
+
+/////////////////////////////////////////////////////////////////////////
+// Largest palindrome product of a 3 digit nums
+
+
+////////////////////////////////////////////////////////////////////////
+// working through a well designed function for better understanding
+
+function checkfactors(num) {
+        //run though for num = 6
+        const isEven = num % 2 === 0;
+              // isEven is true
+        let inc = isEven ? 1 : 2; 
+              // inc = 1 
+        let factors = [1, num];
+              // [1, 6]
+
+        for (
+          let curFactor = isEven ? 2 : 3;
+                // curFactor = 2 because isEven is true so it doesnt asign the else block
+          Math.pow(curFactor, 2) <= num; 
+                // 4 <= 6 true
+          curFactor += inc
+                // 2 += 1 so the next loop curFactor will start at 3
+        ) {
+          // the factoring of the num
+          if (num % curFactor !== 0) continue; // continue is saying if the conditional is true run the if satment 
+                                               // if the conditional is false we dont have to run the if stement code on the passed num
+                                               // the continue statment now makes a lot more sence
+                // 3 % 2 = 0 so 2 is a factor 
+          factors.push(curFactor); 
+          console.log(curFactor)
+                // [1,6,2]
+          let compliment = num / curFactor;
+                // 6 / 2 = 3 so 3 is now the compliment 
+                // this is really smart you are kind of doing two checks in the same loop iteration therefore it cuts the needed ideration 
+                // but i also think this is needed because with the Math.pow conditional you wouldnt get to the "other half" of the number you need to check
+          if (compliment !== curFactor) factors.push(compliment);
+                // 3 !== 2 not true so 3 gets pushed to the factor array 
+                // [1,10,2,3]
+        }
+
+        return factors;
+      }
+console.log(checkfactors(15400))
+      
