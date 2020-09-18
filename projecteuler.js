@@ -1408,8 +1408,8 @@ function digSums(pow) {
 
   let digString = digSum.toString();
   digArrParseArr = [];
+  digArr = digString.split("");
   for (let i = 0; i < digString.length; i++) {
-    digArr = digString.split("");
     digArrParse = parseInt(digArr[i]);
     //console.log(digArrParse)
     digArrParseArr.push(digArrParse);
@@ -1419,8 +1419,11 @@ function digSums(pow) {
   console.log(digreduce);
 }
 
-for (let i = 1; i <= 1000; i++) {
-  console.log("this cycle", i)
-  digSums(i);
-}
+// for (let i = 1; i <= 1000; i++) {
+//   console.log("this cycle", i)
+//   digSums(i);
+// }
 
+digSums(15);
+
+console.log((2 ** 1000).toString(10));
