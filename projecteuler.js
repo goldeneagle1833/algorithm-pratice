@@ -1400,8 +1400,8 @@ function checkfactors(num) {
 
 /////////////////////////////////////////////////////////////////////////
 // sum of digits
-const reducer = (a, b) => a + b;
-
+//const reducer = (a, b) => a + b;
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
 function digSums(pow) {
   let digSum = Math.pow(2, pow);
   console.log(digSum);
@@ -1424,6 +1424,88 @@ function digSums(pow) {
 //   digSums(i);
 // }
 
-digSums(15);
+//digSums(15);
 
-console.log((2 ** 1000).toString(10));
+////////////////////////////////////////////////////////////////////
+// max path sum
+let maxPath = [
+  [75],
+  [95, 64],
+  [17, 47, 82],
+  [18, 35, 87, 10],
+  [20, 04, 82, 47, 65],
+  [19, 01, 23, 75, 03, 34],
+  [88, 02, 77, 73, 07, 63, 67],
+  [99, 65, 04, 28, 06, 16, 70, 92],
+  [41, 41, 26, 56, 83, 40, 80, 70, 33],
+  [41, 48, 72, 33, 47, 32, 37, 16, 94, 29],
+  [53, 71, 44, 65, 25, 43, 91, 52, 97, 51, 14],
+  [70, 11, 33, 28, 77, 73, 17, 78, 39, 68, 17, 57],
+  [91, 71, 52, 38, 17, 14, 91, 43, 58, 50, 27, 29, 48],
+  [63, 66, 04, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31],
+  [04, 62, 98, 27, 23, 09, 70, 98, 73, 93, 38, 53, 60, 04, 23],
+];
+
+// let maxNumber = [];
+// for (let i = 0; i < maxPath.length; i++) {
+//   function maxNum(a) {
+//     maxNumber.push(
+//       a.reduce(function (a, b) {
+//         return Math.max(a, b);
+//       })
+//     );
+//   }
+//   maxNum(maxPath[i]);
+// }
+// console.log(maxNumber);
+// let sums = 0
+// for (let i = 0; i < maxNumber.length; i++) {
+//  sums += maxNumber[i]
+//  console.log(sums)
+// }
+// max number with out a path but the numbers have to make a path its just not the highest sum
+
+
+// this give the highest path comparing the index of the number that came before i think i could do the
+// same thing just in reverse to get the correct answer of highest sum path
+// nevermind nope reverse is a no go
+// looks like the ill have to got about it a different way 
+// some quick googling came with and article talking about adding from the bottom
+// the gettest sum of the to bottom rows would get merged to the n-1 row and go from there  
+function pathingMax() {
+  let highestPath = [];
+  let currentIndex = 0;
+  let pastIndex = 0;
+
+  for (let i = 0; i < maxPath.length; i++) {
+    function pathing(a) {
+      let highestNum = a.reduce(function (a, b) {
+        return Math.max(a, b);
+      });
+      currentIndex = a.indexOf(highestNum);
+      if (currentIndex === pastIndex + 1 || currentIndex === pastIndex) {
+        console.log(true, currentIndex, pastIndex, highestNum);
+        highestPath.push(highestNum);
+      } else {
+        console.log(false, currentIndex, pastIndex, highestNum);
+        a.splice(currentIndex, 1, 0);
+        //console.log(a)
+        pathing(a);
+      }
+
+      pastIndex = currentIndex;
+    }
+
+    pathing(maxPath[i]);
+  }
+  console.log(highestPath);
+  console.log(highestPath.reduce(reducer));
+}
+
+//pathingMax();
+
+
+//splice understanding practice 
+// const animals = ["ant", "bison", "camel", "duck", "elephant"];
+// animals.splice(2, 1, "bruce");
+// //console.log(animals);
