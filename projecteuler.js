@@ -1420,7 +1420,7 @@ function digSums(pow) {
 }
 
 // for (let i = 1; i <= 1000; i++) {
-//   console.log("this cycle", i)
+//   console.log("this cycle", i);
 //   digSums(i);
 // }
 
@@ -1446,32 +1446,33 @@ let maxPath = [
   [04, 62, 98, 27, 23, 09, 70, 98, 73, 93, 38, 53, 60, 04, 23],
 ];
 
-// let maxNumber = [];
-// for (let i = 0; i < maxPath.length; i++) {
-//   function maxNum(a) {
-//     maxNumber.push(
-//       a.reduce(function (a, b) {
-//         return Math.max(a, b);
-//       })
-//     );
-//   }
-//   maxNum(maxPath[i]);
-// }
-// console.log(maxNumber);
-// let sums = 0
-// for (let i = 0; i < maxNumber.length; i++) {
-//  sums += maxNumber[i]
-//  console.log(sums)
-// }
+function returnsMaxNumber() {
+  let maxNumber = [];
+  for (let i = 0; i < maxPath.length; i++) {
+    function maxNum(a) {
+      maxNumber.push(
+        a.reduce(function (a, b) {
+          return Math.max(a, b);
+        })
+      );
+    }
+    maxNum(maxPath[i]);
+  }
+  console.log(maxNumber);
+  let sums = 0;
+  for (let i = 0; i < maxNumber.length; i++) {
+    sums += maxNumber[i];
+    console.log(sums);
+  }
+}
 // max number with out a path but the numbers have to make a path its just not the highest sum
-
 
 // this give the highest path comparing the index of the number that came before i think i could do the
 // same thing just in reverse to get the correct answer of highest sum path
 // nevermind nope reverse is a no go
-// looks like the ill have to got about it a different way 
-// some quick googling came with and article talking about adding from the bottom
-// the gettest sum of the to bottom rows would get merged to the n-1 row and go from there  
+// looks like the ill have to got about it a different way
+// some quick googling came with and article talking about adding from the bottom https://lucidmanager.org/data-science/project-euler-18/
+// the gettest sum of the to bottom rows would get merged to the n-1 row and go from there
 function pathingMax() {
   let highestPath = [];
   let currentIndex = 0;
@@ -1502,10 +1503,29 @@ function pathingMax() {
   console.log(highestPath.reduce(reducer));
 }
 
-//pathingMax();
+pathingMax();
 
-
-//splice understanding practice 
+// splice understanding practice
 // const animals = ["ant", "bison", "camel", "duck", "elephant"];
 // animals.splice(2, 1, "bruce");
 // //console.log(animals);
+
+
+// adding from the bottom and taking the larger of the two possable and making a new layer to the
+// to the stack along the way
+function pathingAddingFromBottom(a) {
+  for (let i = a.length - 2; i >= 0; i--) {
+    for (let j = 0; j < a[i].length; j++) {
+      if (a[i][j] + a[i + 1][j] > a[i][j] + a[i + 1][j + 1]) {
+        a[i].splice(j, 1, a[i][j] + a[i + 1][j]);
+        console.log(i, j, a[i]);
+      } else {
+        a[i].splice(j, 1, a[i][j] + a[i + 1][j + 1]);
+        console.log(i, j, a[i]);
+      }
+    }
+    
+  }
+}
+
+pathingAddingFromBottom(maxPath);
